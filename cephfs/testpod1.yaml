@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cephfs-pod-1
+spec:
+  containers:
+    - image: nginx
+      name: nginx
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - name: test-v1
+        mountPath: /mnt
+  volumes:
+  - name: test-v1
+    persistentVolumeClaim:
+      claimName: cephfs-pvc
